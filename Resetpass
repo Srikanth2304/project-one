@@ -1,0 +1,95 @@
+import React, { useState } from 'react';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
+function Resetpass() {
+    const [otp, setOtp] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [retypePassword, setRetypePassword] = useState('');
+    const [isFocused, setIsFocused] = useState(false);
+
+    const otpPattern = /^[0-9]{6}$/;  // This regex ensures the OTP is 6 digits long and only contains numbers.
+
+    const getPasswordStrength = () => {
+        if (newPassword.length === 0 && isFocused) return { message: 'Password should contain 8 characters.', color: 'text-muted' };
+        if (newPassword.length <= 4 && newPassword.length > 0) return { message: 'Weak password', color: 'text-danger' };
+        if (newPassword.length > 4 && newPassword.length <= 8) return { message: 'Medium password', color: 'text-warning' };
+        if (newPassword.length > 8) return { message: 'Strong password', color: 'text-success' };
+        return null;  
+    };
+
+    const handleSubmit = () => {
+        if (!newPassword || !retypePassword) {
+            alert('The password fields are empty.');
+            return;
+        }
+
+        if (!otpPattern.test(otp)) {
+            alert('OTP should be 6 digits and only contain numbers between 0 - 9.');
+            return;
+        }
+
+        if (newPassword === retypePassword) {
+            alert('Password changed successfully');
+        } else {
+            alert('Password is not matching');
+        }
+    };
+
+    const strength = getPasswordStrength();
+
+    return (
+        <div className="login-content">
+
+            <h5>Enter OTP</h5>
+            <div className="input-group mb-3">
+                <input
+                    type="text"
+                    pattern="[0-9]*"
+                    maxLength="6"
+                    className="form-control"
+                    placeholder="Enter OTP here"
+                    aria-label="Enter OTP"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                />
+            </div>
+
+            <h5>New Password</h5>
+            <div className="input-group mb-3">
+                <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Enter new password"
+                    aria-label="New Password"
+                    value={newPassword}
+                    onChange={(e) => setNewPassword(e.target.value)}
+                    onFocus={() => setIsFocused(true)}
+                    onBlur={() => setIsFocused(false)}
+                />
+            </div>
+            {/* Password hint */}
+            {strength && <small className={`form-text ${strength.color}`}>{strength.message}</small>}
+
+            <h5>Retype Password</h5>
+            <div className="input-group mb-3">
+                <input
+                    type="password"
+                    className="form-control"
+                    placeholder="Retype new password"
+                    aria-label="Retype New Password"
+                    value={retypePassword}
+                    onChange={(e) => setRetypePassword(e.target.value)}
+                />
+            </div>
+
+            <div className="d-grid gap-2 col-6 mx-auto">
+                <button className="btn btn-primary" type="button" onClick={handleSubmit}>Submit</button>
+            </div>
+        </div>
+    );
+}
+
+export default Resetpass;
