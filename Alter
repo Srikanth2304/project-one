@@ -1,0 +1,39 @@
+<style>
+  .profile-work ul {
+    list-style-type: none;
+    padding: 0;
+  }
+
+  .profile-work a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* Adjust this value for spacing between the icon and text */
+  }
+</style>
+
+<div className="profile-work mt-3">
+  <h6>Socials</h6>
+  <ul>
+    <li>
+      <a href="https://www.Linkedin.com" target="top">
+        <img src="path_to_bridge_icon.png" alt="Bridge Icon"/> Bridge
+      </a>
+    </li>
+    <li>
+      <a href="https://www.Linkedin.com" target="_blank">
+        <img src="path_to_linkedin_icon.png" alt="LinkedIn Icon"/> LinkedIn
+      </a>
+    </li>
+    <li>
+      <a href="https://www.Linkedin.com" target="_blank">
+        <img src="path_to_twitter_icon.png" alt="Twitter Icon"/> Twitter
+      </a>
+    </li>
+    <li>
+      <a href="https://www.Linkedin.com" target="_blank">
+        <img src="path_to_github_icon.png" alt="GitHub Icon"/> GitHub
+      </a>
+    </li>
+  </ul>
+</div>
