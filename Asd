@@ -1,0 +1,42 @@
+import React from 'react';
+import './YourStylesheetName.css'; // Remember to import your stylesheet where you define the styles.
+
+// Add the Font Awesome CSS link in your public/index.html file.
+// <!-- Font Awesome CSS link -->
+// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+
+const Socials = () => {
+    return (
+        <div className="profile-work mt-3">
+            <h6>Socials</h6>
+            <ul className="social-list">
+                {/* Bridge doesn't have a common icon representation, using generic 'link' icon for now */}
+                <li><i className="fas fa-link"></i><a href="https://www.Linkedin.com" target="top">Bridge</a></li>
+                <li><i className="fab fa-linkedin"></i><a href="https://www.Linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a></li>
+                <li><i className="fab fa-twitter"></i><a href="https://www.Linkedin.com" target="_blank" rel="noreferrer">Twitter</a></li>
+                <li><i className="fab fa-github"></i><a href="https://www.Linkedin.com" target="_blank" rel="noreferrer">GitHub</a></li>
+            </ul>
+        </div>
+    );
+}
+
+export default Socials;
+
+.social-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-list li {
+    margin-bottom: 10px;
+}
+
+.social-list a {
+    text-decoration: none;
+    margin-left: 8px;  // Adjust this for spacing between the icon and the text.
+    color: inherit;    // Keeps the link color the same as the text color.
+}
+
+.social-list i {
+    margin-right: 5px; // Adjust for spacing between the icon and the link text.
+}
